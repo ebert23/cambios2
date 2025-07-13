@@ -5,5 +5,5 @@ services:
     plan: free
     pythonVersion: "3.11.5"
     buildCommand: "pip install -r requirements.txt"
-    preDeployCommand: "flask db upgrade" # <-- ESTA LÍNEA ES LA CLAVE
+    preDeployCommand: "export FLASK_APP=app.py && flask db upgrade" # <-- LÍNEA MODIFICADA
     startCommand: "gunicorn app:app"
