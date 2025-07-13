@@ -2,7 +2,12 @@ services:
   - type: web
     name: cambios2
     env: python
-    plan: free
-    buildCommand: "pip install -r requirements.txt"
-    preDeployCommand: "flask db upgrade" # <-- SIMPLIFICAMOS ESTA LÍNEA
-    startCommand: "gunicorn app:app"
+    buildCommand: pip install -r requirements.txt
+    startCommand: flask db upgrade && gunicorn app:app
+    envVars:
+      - key: FLASK_APP
+        value: app.py
+      - key: FLASK_ENV
+        value: production
+      - key: DATABASE_URL
+        value: postgresql://cambiosdb_user:xJtg2cPzhBoMjQwABhv6j67TdQGqC21Q@dpg-d1pv1uvfte5s73cpnvf0-a/cambiosdb
