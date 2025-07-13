@@ -2,8 +2,8 @@ services:
   - type: web
     name: cambios2
     env: python
-    plan: free # Especifica el plan gratuito
-    pythonVersion: "3.11.5" # Especifica la versión de Python
+    plan: free
+    pythonVersion: "3.11.5"
     buildCommand: "pip install -r requirements.txt"
-    preDeployCommand: "flask db upgrade"
+    preDeployCommand: "flask db upgrade" # <-- ESTA LÍNEA ES LA CLAVE
     startCommand: "gunicorn app:app"
