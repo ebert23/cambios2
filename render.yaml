@@ -3,7 +3,6 @@ services:
     name: cambios2
     env: python
     plan: free
-    pythonVersion: "3.11.5"
     buildCommand: "pip install -r requirements.txt"
-    preDeployCommand: "export FLASK_APP=app.py && flask db upgrade" # <-- LÍNEA MODIFICADA
+    preDeployCommand: "flask db upgrade" # <-- SIMPLIFICAMOS ESTA LÍNEA
     startCommand: "gunicorn app:app"
